@@ -34,7 +34,7 @@ class _RouterState extends State<Router> {
     if (_routerConfigMap != null) {
       routerKey = _routerConfigMap[Constant.ROUTER_KEY];
     }
-    print('bright1#router#routerKey: $routerKey');
+    print('bright#router#routerKey: $routerKey');
     switch (routerKey) {
       case 'home':
         return HomePage();
@@ -45,10 +45,11 @@ class _RouterState extends State<Router> {
     }
   }
 
+  //从Native端获取数据
   Future<void> getRouterFromAndroid() async {
     try {
       Map result =
-          await Bridge.methodChannel.invokeMapMethod('getRouterFromNative');
+          await Bridge.methodChannel.invokeMapMethod('getDataFromNative');
       if (result != null) {
         setState(() {
           _routerConfigMap = result;
